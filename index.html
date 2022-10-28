@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pedra Papel e  Tesoura</title>
+      <link href="./css/style.css" type="text/css" rel="stylesheet">
+      <link href="./css/photoGallery/logo.png" rel="icon">
+  </head>
+    <body>
+      <header>
+        <h1>Pedra Papel e Tesoura</h1>
+      </header>
+      <main>
+        <section class="interfaceOne" id="interfaceOne">
+          <img src="./css/photoGallery/background.png">
+          <p onclick="start()">Iniciar o jogo</p>
+        </section>
+        <section class="interfaceTwo" id="interfaceTwo">
+          <h2 id="titleCurrent">Rodada 1</h2>
+          <aside class="Box">
+            <div class="boxDisplay">
+              <h3 id="USER"></h3>
+              <p id="editVS"></p>
+              <h3 id="PC"></h3>
+            </div>
+            <div class="boxAction">
+                <h4 onclick="engine(0)" id="OptionOne">✊</h4>
+                <h4 onclick="engine(1)" id="OptionTwo">🖐</h4>
+                <h4 onclick="engine(2)" id="OptionTree">✌️</h4>
+                <h5 onclick="nextRound()" id="nextRound"></h5>
+                <h6 onclick="reset()" id="resetGame">Reiniciar Jogo</h6>
+            </div>
+          </aside>
+        </section>
+      </main>
+      <script src="./javascript/script.js"></script>
+    </body>
+</html>
