@@ -26,6 +26,7 @@ body{
         header h1{
             font-size: 4vw;
             padding: 2vh;
+            text-align: center;
         }
     main{
         margin-top: 20vh;
