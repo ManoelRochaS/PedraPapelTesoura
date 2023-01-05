@@ -1,19 +1,19 @@
 
-/*Media Queries - horizontal orientation*/
+/*Configuração Geral do Documento html*/
 *{
-    padding: 0px;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
 }
 body{
     width: 100%;
     height: 100vh;
     font-family: Oswald;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     color: #8fca1c;
     background-color: #f5f0ea;
-    position: relative;
 }
+    /*Header do Documento com Título Descrito por h1*/
     header{
         width: 100%;
         height: 19.5vh;
@@ -21,64 +21,51 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        position:absolute;
     }
-        header h1{
-            font-size: 4vw;
-            padding: 2vh;
-            text-align: center;
-        }
+    /*Main do Documento com seções decritas por section e Class (Display)*/
     main{
-        margin-top: 20vh;
         width: 100%;
-        height: 80vh;
+        display: flex;
+        flex-flow: column wrap;
     }
-        main .interfaceOne{
-            width: 100%;
-            height: 80vh;
+        main section{
             display: flex;
             flex-flow: column wrap;
             justify-content: center;
             align-items: center;
+            width: 100%;
         }
-            .interfaceOne img{
-                height: 40vh;
-            }
-            .interfaceOne p{
-                margin-top: 5vh;
-                margin-bottom: 10vh;
-                font-size: 2.5vw;
-                padding: 1.5vh 4.5vh;
+            main section h1{ 
+                display: flex;
+                justify-content: center;
+                align-items: center; 
                 border-radius: 2vh;
                 background-color: #ffd976;
-                color: black;
-                border: 0.5vh solid black;
+                color: #000000;
+                border: 0.5vh solid #000000;
             }
-            .interfaceOne p:hover{
-                border: 0.5vh solid black;
+            main section h1:hover{
+                border: 0.5vh solid #000000;
                 color: #ffd976;
-                background-color: black;
+                background-color: #000000;
             }
-        main .interfaceTwo{
+        /*Class (Display) com configuração da tag h2 e Class (Box) e hereditários*/
+        main .Display{
             width: 100%;
-            height: 80vh;
             display: flex;
             flex-flow: column wrap;
             justify-content:space-evenly;
             align-items: center;
-            display: none;
+            Display: none
         }
-            .interfaceTwo h2{
-                font-size: 3vw;
-                color: black;
+            main .Display h2{
+                color: #000000;
             }
-            .interfaceTwo .Box{
-                width: 40%;
-                height: 58vh;
+            main .Display .Box{
                 display: flex;
                 flex-flow: column wrap;
             }
-                .Box .boxDisplay{
+                .Box .BoxDisplay{
                     width: calc(100% - 4vh);
                     height: 26vh;
                     border: 2vh solid #0f4941;
@@ -87,17 +74,10 @@ body{
                     flex-flow: row wrap;
                     justify-content: space-evenly;
                     align-items: center;
-                    background-color: black;
+                    background-color: #000000;
                 }
-                    .Box .boxDisplay h3{
-                        font-size: 10vh;
-                    }
-                    .Box .boxDisplay p{
-                        font-size: 4vh;
-                    }
-                .Box .boxAction{
+                .Box .BoxButtons{
                     width: calc(100% - 4vh);
-                    height: 26vh;
                     border: 2vh solid #0f4941;
                     display: flex;
                     flex-flow: row wrap;
@@ -105,147 +85,170 @@ body{
                     align-items: center;
                     background-color: #0f4941;
                 }
-                    .Box .boxAction h4{
-                        font-size: 8vh;
-                        background-color: #0f4941;
-                        border: 1vh solid black;
-                        padding: 1vh;
+                    .BoxButtons .listButtons{
                         border-radius: 100%;
                     }
-                    .Box .boxAction h4:hover{
-                        background-color: black;
-                        border: 1vh solid #8fca1c;
+                    .BoxButtons .listButtons:hover{
+                        background-color: #000000;
+                        border-color:#8fca1c;
                     }
-                    .Box .boxAction h5{
-                        font-size: 2.5vw;
-                        padding: 1.5vh 4.5vh;
+                    .BoxButtons .auxButtons{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         border-radius: 2vh;
                         display: none;
-                        background-color: #0f4941;
-                        color: black;
-                        border: 0.5vh solid black;
                     }
-                    .Box .boxAction h5:hover{
-                        background-color: black;
-                        color: #8fca1c;
-                        border: 0.5vh solid #8fca1c;
-                    }
-                    .Box .boxAction h6{
-                        font-size: 2.5vw;
-                        padding: 1.5vh 4.5vh;
-                        border-radius: 2vh;
-                        display: none;
-                        color: black;
-                        background-color: #ffd976;
-                        border: 0.5vh solid black;
-                    }
-                    .Box .boxAction h6:hover{
-                        color: #ffd976;
-                        background-color: black;
-                    }
-        
-/*Media Queries - Orientação Vertical*/
-@media all and (orientation: portrait){
 
+/*Configuração Horizontal do Documento html*/
+@media (orientation: landscape){
+    /*Header do Documento com Título Descrito por h1*/
+    header{
+        height: 19.5vh;
+    }
+        header h1{
+            font-size: 4vw;
+        }
+    /*Main do Documento com seções decritas por section e Class (Display)*/
+        main section{
+            height: 80vh;
+        }
+            section img{
+                height: 40vh;
+                width: auto;
+            }
+            section h1{
+                font-size: 2.5vw;
+                margin-top: 5vh;
+                margin-bottom: 10vh;
+                height: 10vh;
+                width: 15%;
+            }
+        /*Class (Display) com configuração da tag h2 e Class (Box) e hereditários*/
+        main .Display{
+            height: 80vh;
+        }
+            main .Display h2{
+                font-size: 3vw;
+            }
+            main .Display .Box{
+                width: 40%;
+                height: 58vh;
+            }
+                .Box .BoxDisplay{
+                    height: 26vh;
+                }
+                    .BoxDisplay #USER, .BoxDisplay #PC{
+                        font-size: 5vw;
+                    }
+                    .BoxDisplay #VS{
+                        font-size: 2vw;
+                    }
+                .Box .BoxButtons{
+                    height: 26vh;
+                }
+                    .BoxButtons .listButtons{
+                        font-size: 4vw;
+                        background-color: #0f4941;
+                        border: 0.5vw solid #000000;
+                        padding: 0.5vw;
+                    }
+                    .BoxButtons .auxButtons{
+                        width: 60%;
+                        height: 10vh;
+                        font-size: 2.5vw; 
+                    }
+                    .BoxButtons #ButtonnextRound{
+                        background-color: #0f4941;
+                        color: #000000;
+                        border: 0.5vh solid #000000;
+                    }
+                    .BoxButtons #ButtonnextRound:hover{
+                        background-color: #000000;
+                        color: #8fca1c;
+                        border-color: #8fca1c;
+                    }
+                    .BoxButtons #ButtonresetGame{
+                        color: #000000;
+                        background-color: #ffd976;
+                        border: 0.5vh solid #000000;
+                    }
+                    .BoxButtons #ButtonresetGame:hover{
+                        color: #ffd976;
+                        background-color: #000000;
+                    }
+}
+
+/*Configuração Vertical do Documento html*/
+@media (orientation: portrait){
+    /*Header do Documento com Título Descrito por h1*/
     header{
         height: 18.5vh;
     }
         header h1{
             font-size: 10vw;
         }
-    main{
-        margin-top: 19vh;
-        height: 81vh;
-    }
-        main .interfaceOne{
+    /*Main do Documento com seções decritas por section e Class (Display)*/
+        main section{
             height: 81vh;
         }
-            .interfaceOne img{
+            section img{
                 width: 80%;
                 height: auto;
             }
-            .interfaceOne p{
+            section h1{
                 margin-top: 0vh;
                 margin-bottom: 10vh;
                 font-size: 6vw;
-                color: #ffd976;
-                background-color: black;
+                height: 10vh;
+                width: 40%;
             }
-            .interfaceOne p:hover{
-                background-color: #ffd976;
-                color: black;
-            }
-        main .interfaceTwo{
-            width: 100%;
+        /*Class (Display) com configuração da tag h2 e Class (Box) e hereditários*/
+        main .Display{
             height: 81vh;
-            display: flex;
-            flex-flow: column wrap;
-            justify-content:space-evenly;
-            align-items: center;
         }
-            .interfaceTwo h2{
+            main .Display h2{
                 font-size: 9vw;
             }
-            .interfaceTwo .Box{
+            main .Display .Box{
                 width: 80%;
                 height: 50vh;
             }
-                .Box .boxDisplay{
-                    width: calc(100% - 4vh);
+                .Box .BoxDisplay{
                     height: 18vh;
-                    border: 2vh solid #0f4941;
-                    border-bottom: 0vh solid transparent;
                 }
-                    .Box .boxDisplay h3{
+                    .BoxDisplay #USER, .BoxDisplay #PC{
                         font-size: 12vw;
                     }
-                    .Box .boxDisplay p{
-                        font-size: 6vw;
+                    .BoxDisplay #VS{
+                        font-size: 9vw;
                     }
-                .Box .boxAction{
-                    width: calc(100% - 4vh);
+                .Box .BoxButtons{
                     height: 12vh;
-                    border: 2vh solid #0f4941;
-                    display: flex;
-                    flex-flow: row wrap;
-                    justify-content: space-evenly;
-                    align-items: center;
                 }
-                    .Box .boxAction h4{
-                        font-size: 8vw;
-                        background-color: black;
-                        border: 1vw solid #8fca1c;
-                        padding: 1vw;
-                    }
-                    .Box .boxAction h4:hover{
-                        background-color: #0f4941;
-                        border: 1vw solid black;
-                    }
-                    .Box .boxAction h5{
-                        font-size: 6vw;
-                        background-color: black;
-                        color: #8fca1c;
-                        border: 0.5vh solid #8fca1c;
-                        display: none;
-                    }
-                    .Box .boxAction h5:hover{
-                        background-color: #0f4941;
-                        color: black;
-                        border: 0.5vh solid black;
-                    }
-                    .Box .boxAction h6{
-                        font-size: 6vw;
-                        color: #ffd976;
-                        background-color: black;
-                        display: none;
-                    }
-                    .Box .boxAction h6:hover{
-                        color: black;
-                        background-color: #ffd976;
-                    }
-
+                .BoxButtons .listButtons{
+                    font-size: 8vw;
+                    background-color: #000000;
+                    border: 1vw solid #8fca1c;
+                    padding: 1vw;
+                }
+                .BoxButtons .auxButtons{
+                    width: 75%;
+                    height: 7vh;
+                    font-size: 6vw;
+                }
+                .BoxButtons #ButtonnextRound{
+                    background-color: #000000;
+                    color: #8fca1c;
+                    border: 0.5vh solid #8fca1c;
+                }
+                .BoxButtons #ButtonresetGame{
+                    color: #ffd976;
+                    background-color: #000000;
+                }
 }
 
+/*Configuração de fonte Externa do Documento html*/
 @font-face {
     font-family: Oswald;
     src: url(./fontText/Oswald-VariableFont_wght.ttf);

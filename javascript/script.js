@@ -1,136 +1,103 @@
 
-/*Declaration of variables, helper counters, and vectors used in the script*/
-let interfaceOne = document.getElementById("interfaceOne");
-let interfaceTwo = document.getElementById("interfaceTwo");
-let titleCurrent = document.getElementById("titleCurrent");
-let user = document.getElementById("USER");
-let editVS = document.getElementById("editVS");
-let pc = document.getElementById("PC");
-let optionOne = document.getElementById("OptionOne");
-let optionTwo = document.getElementById("OptionTwo");
-let optionTree = document.getElementById("OptionTree");
-let next = document.getElementById("nextRound");
-let resetGame = document.getElementById("resetGame");
+/*Declaração de Constantes (Id e Class) - Start, Title, Interface, Users e buttons*/
+const Start = document.getElementById("Start");
+const Title = document.getElementById("Title");
+const Interface = document.getElementsByClassName("Interface");
+const Users = document.getElementsByClassName("Users");
+const buttons = document.getElementsByClassName("buttons");
 
+/*Declaração de Variáveis (Contadores) - countRounds, countRoundsDisplay e countResult*/
 let countRounds = 2;
-let controlRoundsDisplay = 0;
+let countRoundsDisplay = 0;
 let countResult = 0;
 
-let vectorDisplay = ['flex', 'none'];
-let vector = ['✊','🖐','✌️'];
+/*Declaração de Variáveis II (Vetores) - vetorDisplay e vetor*/
+let vetorDisplay = ['flex', 'none'];
+let vetor = ['✊','🖐','✌️'];
 
-
-/*Main functions*/
-function start(){
-    interfaceOne.style.display="none";
-    interfaceTwo.style.display="flex";
-    editTitleCurrent(1);
-    editNext(true);
-}
+/*Funções Principais - () /Start/, engine(numberUser), nextRound() e reset() */
+Start.addEventListener("click", ()=>{
+    Interface[0].style.display = "none";
+    Interface[1].style.display = "flex";
+    reset();
+})
 
 function engine(numberUser){
-
-    let numberPc = randomPc(0,2);
-
-    for(let i = 0; i < 3;i++){
+    let numberPc = randomPC(Math.ceil(0), Math.floor(2));
+    for(var i = 0; i < 3;i++){
         if(numberUser == i){
-            user.innerText = vector[numberUser];
+            Users[0].innerText = vetor[numberUser];
         }
         if(numberPc == i){
-            pc.innerText = vector[numberPc];
+            Users[2].innerText = vetor[numberPc];
         }
     }
-    editVS.innerText = "vs";
-
-    if(controlRoundsDisplay < 2){
-        editDisplay(1,1,1,0,1);
-        displayRound(numberUser, numberPc);
-        controlRoundsDisplay++;
-    }
-    else{
-        editDisplay(1,1,1,1,0);
-        displayWin(numberUser, numberPc);
-        controlRoundsDisplay = 0;
-    }
+    Users[1].innerText = "vs";
+    (countRoundsDisplay < 2) ? editDisplay(1,1,1,0,1) : editDisplay(1,1,1,1,0);
+    (countRoundsDisplay < 2) ? displayRound(numberUser, numberPc) : displayWin(numberUser, numberPc);
+    countRoundsDisplay = (countRoundsDisplay < 2) ? countRoundsDisplay+1 : 0;
 }
 
 function nextRound(){
     editDisplay(0,0,0,1,1);
     editNext(false);
-    editTitleCurrent(countRounds);
+    Title.innerText = toString(countRounds);
     countRounds++;
 }
 
 function reset(){
     editDisplay(0,0,0,1,1);
     editNext(true);
-    editTitleCurrent(1);
+    Title.innerText = toString(1);
     countRounds = 2;
     countResult = 0;
-
 }
 
-
-/*Auxiliary functions*/
-function editTitleCurrent(numero){
-    titleCurrent.innerText = "Rodada "+numero;
+/*Funções Auxiliares (CSS) - editDisplay(n1,n2,n3,n4,n5), editNext(control), displayRound(nUser, nPC) e displayWin(nUser, nPC)*/
+function editDisplay(n1,n2,n3,n4,n5){
+    let v = [n1,n2,n3,n4,n5]
+    for(var i = 0; i < 5; i++){
+        buttons[i].style.display = vetorDisplay[v[i]];
+    }
 }
 
 function editNext(control){
-    if(control){
-        next.innerText = "Iniciar Rodada 2";
+    buttons[3].innerText = (control) ? "Iniciar Rodada 2":"Iniciar Rodada 3";
+    for(var i = 0; i < 3; i++){
+        Users[i].innerText = '';
     }
-    else{
-        next.innerText = "Iniciar Rodada 3";
-    }
-    user.innerText='';
-    editVS.innerText='';
-    pc.innerText='';
 }
 
-function randomPc(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
+function displayRound(nUSER, nPC){
+    if(nUSER == nPC){
+        Title.innerText = "Rodada Empate!";
+    }
+    Title.innerText = (validate(nUSER, nPC)) ? "Você Ganhou a Rodada!" : "Máquina Ganhou a Rodada!";
+    matchCounter(nUSER, nPC);
+}
+
+function displayWin(nUSER, nPC){
+    matchCounter(nUSER, nPC);
+    if(countResult==0){
+        Title.innerText = "Empate Técnico!";
+        return;
+    }
+    Title.innerText = (countResult > 0) ? "Você ganhou o Jogo!" : "Máquina ganhou o Jogo!";
+}
+
+/*Funções Auxiliares (Return e funções matemáticas) - toString(number), randomPC(min, max), validate(nUSER, nPC) e matchCounter(nUSER, nPC)*/
+function toString(number){
+    return "Rodada "+ number;
+}
+
+function randomPC(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function editDisplay(n1,n2,n3,n4,n5){
-    optionOne.style.display = vectorDisplay[n1];
-    optionTwo.style.display = vectorDisplay[n2];
-    optionTree.style.display = vectorDisplay[n3];
-    next.style.display = vectorDisplay[n4];
-    resetGame.style.display = vectorDisplay[n5];
+function validate(nUSER, nPC){
+    return ((nUSER == 0 && nPC == 2) || (nUSER == 1 && nPC == 0) || (nUSER == 2 && nPC == 1))
 }
 
-function displayRound(nUser, nPc){
-    if(nUser == nPc){
-        titleCurrent.innerText = "Rodada Empate!";
-    }
-    else if((nUser == 0 && nPc == 2) || (nUser == 1 && nPc == 0) || (nUser == 2 && nPc == 1)){
-        titleCurrent.innerText = "Você Ganhou a Rodada!";
-        countResult++;
-    }
-    else{
-        titleCurrent.innerText = "Máquina Ganhou a Rodada!"; 
-        countResult--;    
-    }   
-}
-
-function displayWin(nUser, nPc){
-    if ((nUser == 0 && nPc == 2) || (nUser == 1 && nPc == 0) || (nUser == 2 && nPc == 1)){
-        countResult++;
-    }
-    else{  
-        countResult--;  
-    } 
-
-    if(countResult==0){
-        titleCurrent.innerText = "Empate Técnico!";
-    }
-    else if(countResult > 0){
-        titleCurrent.innerText = "Você ganhou o Jogo!";
-    }
-    else{
-        titleCurrent.innerText = "Máquina ganhou o Jogo!";
-    }
+function matchCounter(nUSER, nPC){
+    countResult = (validate(nUSER, nPC)) ? countResult+1 : countResult-1;
 }
