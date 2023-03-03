@@ -101,6 +101,9 @@ body{
                     width: 100%;
                 }
                     .boxButtons h6{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         border-radius: 100%;
                         border-color: var(--colorOne);
                         border-style: solid;
@@ -211,7 +214,8 @@ body{
                     height: 24vh;
                 }
                     .boxButtons h6{
-                        padding: 0.3vw;
+                        height: 12vh;
+                        width: 12vh;
                         font-size: 3vw;
                     }
             .displayRules aside{
@@ -270,7 +274,8 @@ body{
                     height: 24vw;
                 }
                     .boxButtons h6{
-                        padding: 0.9vw;
+                        height: 16vw;
+                        width: 16vw;
                         font-size: 9vw;
                     }
             .displayRules aside{
