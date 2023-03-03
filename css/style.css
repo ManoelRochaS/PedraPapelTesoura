@@ -1,3 +1,4 @@
+/*Style application general*/
 :root{
     --colorOne: #050A30;
     --colorTwo: #7EC8E3;
@@ -169,6 +170,7 @@ body{
                         text-align: justify;
                     }
                 
+/*Style application orientation landscape*/
 @media all and (orientation: landscape){
             header aside:first-child h1{
                 font-size: 3.3vw;
@@ -227,6 +229,7 @@ body{
                     }
 }
 
+/*Style application orientation portrait*/
 @media all and (orientation: portrait){
             header aside:first-child h1{
                 font-size: 7vw;
@@ -285,6 +288,7 @@ body{
                     }
 }
 
+/*Declaration of font external*/
 @font-face {
     font-family: Work Sans;
     src: url(./font/WorkSans-Light.ttf);
