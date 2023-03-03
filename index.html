@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./css/photoGallery/logo.png">
+    <title>Pedra, papel e tesoura</title>
+</head>
+<body>
+    <header>
+        <aside>
+            <h1>PEDRA, PAPEL E TESOURA</h1>
+        </aside>
+    </header>
+    <main>
+        <section class="displayGame">
+            <img src="./css/photoGallery/backGround.png" title="play">
+            <h2 onclick="startGame()" class="buttonEngine">Iniciar Jogo</h2>
+        </section>
+        <section class="displayGame">
+            <h2 id="Title" class="transition"></h2>
+            <aside>
+                <div class="screen transition">
+                    <h3 class="displayIcons"></h3>
+                    <h4 class="displayIcons"></h4>
+                    <h3 class="displayIcons"></h3>
+                </div>
+                <div id="boxButtons" class="boxButtons transition"></div>
+            </aside>
+        </section>
+    </main>
+    <footer>
+        <img src="./css/photoGallery/iconRules.png" title="Dúvidas?" onclick="displayRules()">
+        <section class="displayRules" id="cardRules" onclick="displayRules()">
+            <aside>
+                <div id="cardDescription"></div>
+            </aside>
+        </section>
+    </footer>
+    <script src="./javascript/script.js"></script>
+</body>
+</html>
