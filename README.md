@@ -8,7 +8,7 @@ O Jogo Pedra, Papel e Tesoura é um jogo simples disputado entre dois jogadores.
 
 ## Acesso a aplicação
 
-Link para acesso: https://manoelrochas.github.io/JogoDaMemoria/
+Link para acesso: https://manoelrochas.github.io/PedraPapelTesoura/
 
 ## Tecnologias utilizadas
 
